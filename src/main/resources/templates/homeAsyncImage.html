@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>homeAsyncImage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+</head>
+<body>
+
+homeAsyncImage
+
+<form id="f1">
+    <input type="" name="name" placeholder="name">
+    <input type="email" name="email" placeholder="email">
+    <input type="file" name="image" placeholder="">
+    <button id="btn">save with image</button>
+</form>
+
+<script>
+
+    $(function () {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ajaxSend(function (e, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    });
+
+    console.log($('#f1')[0]);
+    $('#btn').click(function (e) {
+        e.preventDefault();  //don't reload form
+
+        $.ajax({
+            url: "/upload",
+            type: "POST",
+            data: new FormData($("#f1")[0]),
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (res) {
+                console.log(res)
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+
+    })
+
+</script>
+
+</body>
+</html>

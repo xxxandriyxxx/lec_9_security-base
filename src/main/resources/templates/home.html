@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<span th:replace="~{fragments::header(${xxx})}"></span>
+<body>
+<h1 th:utext="#{asd.qwe}"></h1>
+
+<form th:action="@{/saveUser}" method="post">
+    <input type="text" name="username" placeholder="username">
+    <input type="text" name="password" placeholder="password">
+    <input type="submit" name="" placeholder="" value="save user">
+</form>
+
+<!--<form th:action="@{/saveContact}" method="post">-->
+<!--<input type="text" name="name" placeholder="name">-->
+<!--<input type="email" name="email" placeholder="email">-->
+<!--<input type="text" name="phoneList" placeholder="phoneList">-->
+<!--<input type="submit" name="" placeholder="">-->
+<!--</form>-->
+
+<!--<form th:action="@{/saveContact}" method="post" th:object="${contact}" enctype="multipart/form-data">-->
+<!--&lt;!&ndash;<input type="text" th:field="${contact.name}" placeholder="name">&ndash;&gt;-->
+<!--<input type="text" th:field="*{name}" placeholder="name">-->
+<!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</p>-->
+<!--<input type="email" th:field="*{email}" placeholder="email">-->
+<!--<input type="text" th:field="*{phoneList}" placeholder="phoneList">-->
+<!--<input type="file" name="picture" placeholder="">-->
+<!--<input type="submit" name="" placeholder="">-->
+<!--</form>-->
+
+<!--<ul>-->
+<!--<li th:each="contact :${contacts}">-->
+<!--<div>-->
+<!--<img th:src="@{'/ava/'+${contact.avatar}}" alt="">-->
+<!--</div>-->
+<!--<a th:href="@{'details-'+${contact.id}}" th:text="'detail of contact'+${contact.id}"></a>-->
+<!--</li>-->
+<!--</ul>-->
+</body>
+</html>
